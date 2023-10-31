@@ -101,8 +101,14 @@ public class Welcome {
                 User user = new User(name, email);
                 int reponse = UserService.saveUser(user);
                 switch (reponse) {
-                    case 0 -> System.out.println("User registered");
-                    case 1 -> System.out.println("Already registered");
+                    case 0 -> {
+                        System.out.println("Already registered");
+                        System.out.println("Try logging in");
+                    }
+                    case 1 -> {
+                        System.out.println("User registered");
+                        new UserView(email).home();
+                    }
                 }
                 break;
             } else {
